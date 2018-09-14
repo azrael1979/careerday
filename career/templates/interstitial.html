@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+{%load static%}
+{%load staticfiles%}
+</head>
+<body>
+<div id="header" style="border:2px solid black;background: white; border-radius:25px;margin-bottom:20px;box-shadow: 10px 10px 5px grey">
+<h1 style="font-family:arial; font-variant:small-caps;color:black"> Inquadra il QR code </h1>
+</div>
+<div class="qrcode" style="border:2px solid black;background: white; border-radius:25px;margin-bottom:40px;box-shadow: 10px 10px 5px grey" >
+<img border="2" style="border:2px solid black;border-radius:10px;margin:auto;display:block; width:50vw;" src="{{ img }}" />
+<div class="redirect" style="border:2px solid blue;background: yellow; border-radius:25px;margin-bottom:40px;box-shadow: 10px 10px 5px grey">
+<a href="/mostragrafici?session={{session}}"> <p style="text-align:center;font-family:arial; font-variant:small-caps;color:blue">Chiudi sessione & Mostra Risultati </p></a>
+</body>
+</html>

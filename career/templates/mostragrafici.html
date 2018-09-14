@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
+<body>
+<div id="total"  style="
+background-image: url('./media/background.jpg');
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+<div id="header" style="border:2px solid black;background: white; border-radius:25px;margin-bottom:20px;box-shadow: 10px 10px 5px grey">
+<h1 align="center" style="font-family:arial; font-variant:small-caps;color:black" id="titolo"> risultati di sessione</h1>
+</div>
+
+{%for immagine in imgs%}
+{%with forloop.counter0 as indexa%}
+{%for question in questions%}
+{%ifequal indexa forloop.counter0%}
+<div id="box" style="margin-bottom: 20px;">
+<div id="question" width="95vw" style="background-color:white; border:2px solid black;border-radius: 25px;box-shadow: 10px 10px 5px grey;  margin-bottom: 20px;">
+<p style="font-family:arial; font-size:2vw; font-variant:small-caps;color:black;text-align:center" >{{question}}</p>
+</div>
+{%endifequal%}
+{%endfor%}
+<div id="graph">
+<a href="{{ immagine }}">
+<img style="border:2px solid black;border-radius:25px;margin:auto;display:block; box-shadow: 10px 10px 5px grey;width:50vw;"  src="{{ immagine }}" />
+</a>
+</div>
+</div>
+{%endwith%}
+{%endfor%}
+</div>
+</body>
+</html>

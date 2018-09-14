@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load staticfiles %}
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>Domanda 5/5</title> 
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.js"></script>  
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="{%static 'jquery.ui.touch-punch.min.js' %}"></script> 
+</head>
+<body> 
+<div>
+  <div data-role="header" data-theme="d">
+    <h1>5: Canali di Reclutamento</h1>
+  </div>
+    <div id="question_box">
+<p style="
+        width: 80%;
+    border: 2px solid black;
+    border-radius:10px;
+    padding: 10px;
+    margin: 0 auto;">
+{{question}}
+</p>
+</div>
+  <div data-role="content" data-theme="c">
+    <ul data-role="listview" data-inset="true" data-theme="d" id="sortable5">
+      <li data-role="list-divider">Metti in ordine trascinando gli elementi</li>
+      <li name='item1' id="item1">{{skill_set.0}}</li>
+      <li name='item2' id="item2">{{skill_set.1}}</li>
+      <li name='item3' id="item3">{{skill_set.2}}</li>
+      <li name='item4' id="item4">{{skill_set.3}}</li>
+      <li name='item5' id="item5">{{skill_set.4}}</li>
+    </ul>
+  </div>
+<div id="navigation">
+<div align=right>
+<a style="padding:20px" id="forward" href="{{next}}"> Avanti </a>
+</div>
+<div align=left>
+<a style="padding:20px" id="back" href="{{prev}}"> Indietro </a>
+</div>
+</div>
+
+</div>
+<script>
+var sessionId="{{sessione}}";
+var userId={{utente}};
+var domanda_id={{question_id}};
+  $(document).bind('pageinit', function() {
+    $( "#sortable5" ).sortable({
+    update: function (event, ui) {
+        var data = {};
+        $('#sortable5').children().each(function() {
+            data[$(this).attr('name')] = $(this).index();
+        });
+        data.session=sessionId;
+        data.utente=userId;
+        data.domanda_id=domanda_id;
+        $.ajax({
+            data: data,
+            type: 'POST',
+            url: '/process/'
+        });
+    }
+});
+    $( "#sortable" ).disableSelection();
+    <!-- Refresh list to the end of sort to have a correct display -->
+    $( "#sortable" ).bind( "sortstop", function(event, ui) {
+      $('#sortable').listview('refresh');
+    });
+  });
+  </script>
+</body>
+</html>
+

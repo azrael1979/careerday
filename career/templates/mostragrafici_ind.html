@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load staticfiles %}
+{% csrf_token %}
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>I tuoi risultati</title> 
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.js"></script>  
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+</head>
+<body>
+<div id="header" style="border:2px solid black;background: white; border-radius:25px;margin-bottom:20px;box-shadow: 10px 10px 5px grey">
+<h1 id="titolo" style="text-align:center"> I Tuoi Risultati </h1>
+</div>
+{%for immagine in imgs%}
+{%with forloop.counter0 as indexa%}
+{%for question in questions%}
+{%ifequal indexa forloop.counter0%}
+<div id="box" style="margin-bottom: 20px;">
+<div id="question" width="95vw" style="border:2px solid black;border-radius: 25px;box-shadow: 10px 10px 5px grey;  margin-bottom: 20px;">
+<p style="text-align:center; font-size=2vw;" font-family="Arial">{{question}}</p>
+</div>
+{%endifequal%}
+{%endfor%}
+<div id="graph">
+<a href="{{ immagine }}">
+<img style="border:2px solid black;border-radius:25px;margin:auto;display:block; box-shadow: 10px 10px 5px grey; width:95vw;" size="800x800" src="{{ immagine }}" />
+</a>
+</div>
+</div>
+{%endwith%}
+{%endfor%}
+</body>
+</html>

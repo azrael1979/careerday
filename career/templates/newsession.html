@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% load static %}
+{% load staticfiles %}
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>Crea Sessione</title> 
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <link rel='stylesheet' href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="{%static 'jquery.ui.touch-punch.min.js' %}"></script> 
+
+<script>
+$( function() {
+$( '#id_data' ).datepicker();
+} );
+</script>
+</head>
+<body>
+<div id="total"  style="background-image: url('./media/background.jpg');
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+<div id="header" style="border:2px solid black;background: white; border-radius:25px;margin-bottom:20px;box-shadow: 10px 10px 5px grey">
+<h1 id="titolo" style="text-align:center"> Crea Nuova Sessione </h1>
+</div>
+<div class="form_session" align="center" style="border:1px solid black;background: white; width:50vw; margin-left:auto; margin-right:auto; border-radius:25px;margin-bottom:20px;box-shadow: 10px 10px 5px grey">
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Submit" />
+</form>
+</div>
+<div id="avvertenze" style="text-align:center; border:2px solid black;font-size:1vw; background: white; border-radius:25px;margin-bottom:20px;box-shadow: 10px 10px 5px grey;width:30vw;">
+<li class="avvertenza" style="text-align:center; color:blue"> In linea generale, non cambiare l'hash </li>
+<li class="avvertenza" style="text-align:center; color:blue"> Nelle NOTE, inserire annotazioni utili a riconoscere la sessione in futuro (ad es. nome azienda, o contesto della rilevazione)</li>
+</div>
+</div>
+</body>

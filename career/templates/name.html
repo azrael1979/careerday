@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+ {% load static %}
+{% load staticfiles %}
+{% csrf_token %}
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>Domanda 1/5</title> 
+ 
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.0-alpha.2/jquery.mobile-1.4.0-alpha.2.min.js"></script>  
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+<script src="{%static 'jquery.ui.touch-punch.min.js' %}"></script> 
+
+<style>
+#expand-box {
+width: 100%;
+padding: 0;
+font-size:20pt;
+border: 0px solid #BBB;
+margin: 7px 0 0 0;}
+
+#expand-box-header {
+margin: 0;
+font-size:20pt;
+color: black;
+padding: 0 0 3px 2px;}
+
+#expand_box_sub_header { clear: both; }
+
+.clearfix:after { content: "\00A0"; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}  
+.clearfix{ display: inline-block;}  
+html[xmlns] .clearfix { display: block;}  
+* html .clearfix{ height: 1%;}  
+.clearfix {display: block}  
+input[type=range] {
+  height: 34px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 11px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #74A9D8;
+  border-radius: 1px;
+  border: 0px solid #010101;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000031;
+  border: 1px solid #00001E;
+  height: 26px;
+  width: 26px;
+  border-radius: 15px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -8px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #74A9D8;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 11px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #74A9D8;
+  border-radius: 1px;
+  border: 0px solid #010101;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000031;
+  border: 1px solid #00001E;
+  height: 26px;
+  width: 26px;
+  border-radius: 15px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 11px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #74A9D8;
+  border: 0px solid #010101;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #74A9D8;
+  border: 0px solid #010101;
+  border-radius: 2px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000031;
+  border: 1px solid #00001E;
+  height: 26px;
+  width: 26px;
+  border-radius: 15px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #74A9D8;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #74A9D8;
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: 300;
+}
+
+output {
+  font-size: 2em;
+  padding: .3em;
+  margin:auto;
+}
+</style>
+</head>
+<body>
+<div id="header" width="95vw" style="background-color:white; border:2px solid black;border-radius: 25px;box-shadow: 10px 10px 5px grey;  margin-bottom: 20px;">
+<div align=center> <h3> Utente </h3> </div>
+</div>
+
+<form method="get" action="/processautente/">
+<div id="questionbox"width="95vw" style="background-color:white; border:2px solid black;border-radius: 25px;box-shadow: 10px 10px 5px grey;  margin-bottom: 20px;">
+<input type="hidden" name="session" value="{{sessionid}}">
+<input type="hidden" name="user" value="{{userid}}">
+<h2 align="center"> Anno di Nascita </h2>
+<select name="foo">
+    {% for anno in anni %}
+    {% if anno == averageyear%}
+    <option selected="selected">{{averageyear}}</option>
+    {%else%}
+    <option value="{{anno}}">{{anno}}</option>
+    {% endif%}
+    {%endfor%}
+  </select>
+<h2 align="center"> Genere </h2>
+<select name="gender">
+    <option value="F">F</option>
+    <option value="M">M</option>
+<option selected="selected">NA</option>
+  </select>
+
+<button type="submit" style="font-size:18pt; border-radius: 12px;" z-index="1"> Vai ai Risultati </button>
+</form>
+</div>
+
+</body>
+
+</html>
