@@ -4,9 +4,8 @@ from django.views.decorators.cache import never_cache
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.template import RequestContext
-#RIMUOVI LINECACHE IN PRODUZIOEN!
-import linecache
 import random,sys,os
+import tinyurl
 from PIL import Image
 from scipy import spatial
 from django.shortcuts import render,redirect
@@ -31,6 +30,9 @@ from math import pi
 import datetime
 from scipy.constants.constants import yobi
 
+host_url='http://127.0.0.1'
+hash_text=''
+
 def mean(a):
     return sum(a) / len(a)
 
@@ -52,15 +54,16 @@ def PrintException():
 
 # Create your views here.    
 def show_qr_view(request):
-    latestsession=Session.objects.latest('id')
-    print "L'ultima sessione è:"
-    session_id=latestsession.hash
-    print session_id
+    session_id=request.GET.get('session')
+    latestsession=Session.objects.filter(hash=session_id)[0]
+#    latestsession=Session.objects.latest('id')
+    print "L'ultima sessione è:"+latestsession.hash
+    url=tinyurl.create_one(host_url+'/start_session/?session='+session_id)
+    print url
     img=latestsession.qrcode
     print img
-    return render(request,"interstitial.html",{"img":img,"session":session_id})
+    return render(request,"interstitial.html",{"img":img,"session":session_id,"url":url})
 
-@login_required
 class newsession_form(FormView):
     def get_initial(self):
         while True:
@@ -78,11 +81,11 @@ class newsession_form(FormView):
     #hash_text=str(random.getrandbits(128))
     template_name="newsession.html"
     form_class=SessionForm
-    success_url='/show_qr/'
     def form_valid(self, form):
         form.save()
         form.process_session()
-        return super(newsession_form, self).form_valid(form)
+        #return super(newsession_form, self).form_valid(form)
+        return redirect('/show_qr?session='+form.cleaned_data.get('hash'))
 
 @never_cache        
 @csrf_protect

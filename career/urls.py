@@ -3,6 +3,7 @@ from django.conf.urls.static import static
 from . import views
 from django.conf import settings
 from django.conf.urls import include
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     #url(r'^$', views.index, name='index'),
@@ -11,7 +12,7 @@ urlpatterns = [
     url(r'^question3/$', views.question3, name='question3'),
     url(r'^question4/$', views.question4, name='question4'),
     url(r'^question5/$', views.question5, name='question5'),
-    url(r'newsession/$', views.newsession_form.as_view(),name='newsession'),
+    url(r'newsession/$', login_required(views.newsession_form.as_view()),name='newsession'),
     url('^newuser$',views.newuser,name='newuser'),
     url('show_qr/$',views.show_qr_view,name='show_qr'),
     url(r'^start_session$',views.start_session,name="start_session"),
