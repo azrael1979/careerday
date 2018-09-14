@@ -9,9 +9,11 @@ from django.forms import ModelForm
 from .models import Session,Admindata,User,Risposta
 from PIL import Image
 import qrcode
+import tinyurl
 #import matplotlib.pyplot as plt
 #import pandas as pd
 #from math import pi
+host_url='http://127.0.0.1'
 
 ora = datetime.datetime.now()
 anno=ora.year
@@ -64,12 +66,11 @@ class SessionForm( ModelForm ):
                            border = 4,
                            )
 
-        data='http://127.0.0.1/start_session/?session='+id
+        data=host_url+'/start_session/?session='+id
         qr.add_data(data)
         qr.make(fit=True)
         # Create an image from the QR Code instance
         img = qr.make_image()
-        print img
         img.save('./media/qrcodes/'+id+'.jpg')
         latestsession.qrcode='/media/qrcodes/'+id+'.jpg'
         latestsession.save()
