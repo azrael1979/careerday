@@ -16,7 +16,7 @@ import tinyurl
 #import pandas as pd
 #from math import pi
 host_url='http://104.248.46.248:8000'
-ACCESS_ID = 'RPIBQG3DPFHSGPEKIXSI'
+ACCESS_KEY = 'RPIBQG3DPFHSGPEKIXSI'
 SECRET_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
 
 
