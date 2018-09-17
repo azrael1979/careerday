@@ -124,20 +124,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-#AWS_ACCESS_KEY_ID = 'RPIBQG3DPFHSGPEKIXSI'
-#AWS_SECRET_ACCESS_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
-#AWS_STORAGE_BUCKET_NAME = 'accessspace'
-#AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
-#AWS_S3_OBJECT_PARAMETERS = {
-#    'CacheControl': 'max-age=86400',
-#}
-#AWS_LOCATION = '.'
-#
-#STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'career/static'),
-#]
-#STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'RPIBQG3DPFHSGPEKIXSI'
+AWS_SECRET_ACCESS_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
+AWS_STORAGE_BUCKET_NAME = 'accessspace'
+AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'career/static'),
+]
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_ROOT = '/home/career/careerday/media/'
 MEDIA_URL = 'https://%s/%s/media/'
