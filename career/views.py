@@ -375,7 +375,7 @@ def mostragrafici(request):
 #    })
     try:
         for a in range (0,5):
-            print a
+          #  print a
         #creiamo un array (lista di liste) con le risposte
         #OCCHIO CHE LE ID DI QUESTION e REPLIES non partono da 0
             skill_list=Skill.objects.filter(question_id=6+a).values_list('question_text',flat=True)
@@ -384,8 +384,8 @@ def mostragrafici(request):
             session_means_query=Risposta.objects.filter(session=sessione,questionId=a)
             sessionmeans=get_replies(session_means_query,True)
             session_results.append(sessionmeans)
-            print "skill list"
-            print skill_list
+           # print "skill list"
+           # print skill_list
             #print session_results
             #print assi
         #print assi[0].values_list(flat=True)
@@ -397,7 +397,7 @@ def mostragrafici(request):
                 unidiff=6-session_results[k][b]
                 results2[assi[k][b][:10]]=[unidiff,sessdiff,emplodiff]
             differences=[1-spatial.distance.cosine(session_results[k], employer_means[k]),1-spatial.distance.cosine(session_results[k], uni_means[k])]
-            print differences
+            #print differences
             
             results=pd.DataFrame.from_dict(results2)
             cols=results.columns.tolist()
@@ -405,7 +405,7 @@ def mostragrafici(request):
             cols.insert(0, cols.pop(cols.index('Group')))
             results=results[cols]
             print results.head()
-            urlimages.append("./media/graphs/"+sessione+"_Q"+str(k)+".jpg")
+            urlimages.append("/media/graphs/"+sessione+"_Q"+str(k)+".jpg")
             spiderplot(results,urlimages[k],differences)
             #prendiamo tutte le domande e le serviamo poi al template
             domande=[x[0].encode('utf-8') for x in Question.objects.all().values_list('question_text')]
@@ -478,6 +478,6 @@ def spiderplot(df,urlimage,differences):
         plt.gcf().clear()
         return plt
     except: 
-        img=Image.open('./media/graphs/Error-image.jpg')
+        img=Image.open('/media/graphs/Error-image.jpg')
         return img
 from django.utils.translation import ugettext as _
