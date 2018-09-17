@@ -88,7 +88,7 @@ class SessionForm( ModelForm ):
         s3 = boto3.resource('s3')
         client.put_object(Body=img_data, Bucket="careerspace",ContentType='image/png', Key=id+'.png')
         #img.save('./media/qrcodes/'+id+'.jpg')
-        latestsession.qrcode=id+'.jpg'
+        latestsession.qrcode=id+'.png'
         latestsession.save()
         #CALCOLIAMO LE MEDIE DEGLI EMPLOYER CHE STOREREMO POI NEL DATABASE PER USO FUTURO
         #anzitutto troviamo le sessioni relative a emplyer e uni        
