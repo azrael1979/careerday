@@ -484,9 +484,11 @@ def spiderplot(df,urlimage,differences):
             plt.savefig(urlimage.encode('ascii'))
             plt.gcf().clear()
         except Exception as e:
+            print "erore interno"
             print e
         return plt
     except Exception as e:
+        print "errore esterno"
         print e 
         img=Image.open('/media/graphs/Error-image.jpg')
         return img
