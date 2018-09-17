@@ -4,7 +4,7 @@ from django_range_slider.fields import RangeSliderField
 import datetime
 import json
 import numpy as np
-import boto
+import boto3
 import io
 from bootstrap_datepicker.widgets import DatePicker
 from django.forms import ModelForm
@@ -79,11 +79,15 @@ class SessionForm( ModelForm ):
         img_data=io.BytesIO()
         img.save(img_data)
         img_data.seek(0)
-        conn = boto.connect_s3(aws_access_key_id=ACCESS_KEY,
-        aws_secret_access_key=SECRET_KEY,
-        host='ams3.digitaloceanspaces.com')
-        bucket = conn.get_bucket('careerspace')
-        bucket.put_object(Body=img_data, ContentType='image/png', Key=id+'.png')
+        session = boto3.session.Session()
+        client = session.client('s3',
+        region_name='ams3',
+        endpoint_url='https://ams3.digitaloceanspaces.com',
+        aws_access_key_id=ACCESS_KEY,
+        aws_secret_access_key=SECRET_KEY)
+        s3 = boto3.resource('s3')
+        bucket = s3.Bucket('careerspace')
+        bucket.put_object(Body=img_data, ContentType='image/png', Key='/media/qr/id'+'.png')
         #img.save('./media/qrcodes/'+id+'.jpg')
         latestsession.qrcode=id+'.jpg'
         latestsession.save()
