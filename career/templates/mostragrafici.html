@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+{% load static %}
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" /> 
 <body>
 <div id="total"  style="
@@ -27,7 +28,7 @@ background-image: url('./media/background.jpg');
 {%endifequal%}
 {%endfor%}
 <div id="graph">
-<a href="{{ immagine }}">
+<a href="{% static immagine %}">
 <img style="border:2px solid black;border-radius:25px;margin:auto;display:block; box-shadow: 10px 10px 5px grey;width:50vw;"  src="{%static immagine %}" />
 </a>
 </div>
