@@ -298,7 +298,7 @@ def endpage (request):
     #if not Session.objects.get(hash=sessione).chiusa: 
     #    return redirect (request,'wait.html',{"sessione":sessione,"utente":UserID}
     for a in range (0,5):
-        nomefile="/media/graphs/user"+UserID+"sessione"+sessione+"_Q"+str(a)+".jpg"
+        nomefile="user"+UserID+"sessione"+sessione+"_Q"+str(a)+".jpg"
         if os.path.isfile(nomefile): 
             #print "we got "+nomefile
             urlimages[a]=nomefile
@@ -492,7 +492,7 @@ def spiderplot(df,urlimage,differences):
             aws_secret_access_key=SECRET_KEY,
             host='ams3.digitaloceanspaces.com')
             bucket = conn.get_bucket('careerspace')
-            bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
+            bucket.put_object(Body=img_data, ContentType='image/png', Key=urlimage)
 
 
 
