@@ -481,7 +481,7 @@ def spiderplot(df,urlimage,differences):
         # Add legend
         plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
         try: 
-            plt.savefig(urlimage)
+            plt.savefig(urlimage.encode('ascii'))
             plt.gcf().clear()
         except Exception as e:
             print e
