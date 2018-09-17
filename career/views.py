@@ -489,11 +489,14 @@ def spiderplot(df,urlimage,differences):
             img_data=io.BytesIO()
             plt.savefig(img_data,format='png')
             img_data.seek(0)
-            conn = boto.connect_s3(aws_access_key_id=ACCESS_KEY,
-            aws_secret_access_key=SECRET_KEY,
-            host='ams3.digitaloceanspaces.com')
-            bucket = conn.get_bucket('careerspace')
-            bucket.put_object(Body=img_data, ContentType='image/png', Key=urlimage)
+            session = boto3.session.Session()
+            client = session.client('s3',
+            region_name='ams3',
+            endpoint_url='https://ams3.digitaloceanspaces.com',
+            aws_access_key_id=ACCESS_KEY,
+            aws_secret_access_key=SECRET_KEY)
+            s3 = boto3.resource('s3')
+            client.put_object(Body=img_data, Bucket="careerspace",ContentType='image/png', Key=urlimage)
 
 
 
