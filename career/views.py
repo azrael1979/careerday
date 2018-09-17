@@ -341,7 +341,11 @@ def endpage (request):
                 results=results[cols]
                 #print results.head()
                 urlimages[k]=("/media/graphs/user"+str(UserID)+"sessione"+sessione+"_Q"+str(k)+".jpg")           
-                spiderplot(results,urlimages[k],differences)
+                try: 
+                    spiderplot(results,urlimages[k],differences)
+                except IOError as e:
+                    print(e.errno)
+                    print(e) 
             else: 
                 print"we have this graph already"
     except Exception as e:
