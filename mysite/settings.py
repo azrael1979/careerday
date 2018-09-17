@@ -126,7 +126,7 @@ USE_TZ = True
 
 AWS_ACCESS_KEY_ID = 'RPIBQG3DPFHSGPEKIXSI'
 AWS_SECRET_ACCESS_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
-AWS_STORAGE_BUCKET_NAME = 'accessspace'
+AWS_STORAGE_BUCKET_NAME = 'careerspace'
 AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
