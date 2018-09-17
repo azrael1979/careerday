@@ -6,9 +6,9 @@ from django.contrib import messages
 from django.template import RequestContext
 import random,sys,os
 import io
+import boto3
 import tinyurl
 from PIL import Image
-from boto3 import session
 from botocore.client import Config
 from scipy import spatial
 from django.shortcuts import render,redirect
