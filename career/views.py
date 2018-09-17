@@ -7,6 +7,8 @@ from django.template import RequestContext
 import random,sys,os
 import tinyurl
 from PIL import Image
+from boto3 import session
+from botocore.client import Config
 from scipy import spatial
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
@@ -32,6 +34,8 @@ from math import pi
 import datetime
 from scipy.constants.constants import yobi
 
+ACCESS_ID = 'RPIBQG3DPFHSGPEKIXSI'
+SECRET_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
 host_url='http://104.248.46.248:8000'
 hash_text=''
 
@@ -481,7 +485,17 @@ def spiderplot(df,urlimage,differences):
         # Add legend
         plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
         try: 
-            plt.savefig(urlimage.encode('ascii'))
+            img_data=io.BytesIO()
+            plt.savefig(img_data,format='png')
+            img_data.seek(0)
+            conn = boto.connect_s3(aws_access_key_id=ACCESS_KEY,
+            aws_secret_access_key=SECRET_KEY,
+            host='ams3.digitaloceanspaces.com')
+            bucket = conn.get_bucket('careerspace')
+            bucket.put_object(Body=img_data, ContentType='image/png', Key=KEY)
+
+
+
             plt.gcf().clear()
         except Exception as e:
             print "erore interno"
