@@ -13,7 +13,7 @@ import tinyurl
 #import matplotlib.pyplot as plt
 #import pandas as pd
 #from math import pi
-host_url='http://127.0.0.1'
+host_url='http://104.248.46.248:8000'
 
 ora = datetime.datetime.now()
 anno=ora.year

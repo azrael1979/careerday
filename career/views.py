@@ -30,7 +30,7 @@ from math import pi
 import datetime
 from scipy.constants.constants import yobi
 
-host_url='http://127.0.0.1'
+host_url='http://104.248.46.248:8000'
 hash_text=''
 
 def mean(a):
