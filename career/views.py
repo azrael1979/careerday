@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import matplotlib
+matplotlib.use('Agg')
 from __future__ import unicode_literals,division
 from django.views.decorators.cache import never_cache
 from django.shortcuts import redirect
