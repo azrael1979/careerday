@@ -484,7 +484,8 @@ def spiderplot(df,urlimage,differences):
         except Exception as e:
             print e
         return plt
-    except IOError as e: 
+    except Exception as e:
+        print e 
         img=Image.open('/media/graphs/Error-image.jpg')
         return img
 from django.utils.translation import ugettext as _
