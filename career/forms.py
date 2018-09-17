@@ -76,7 +76,7 @@ class SessionForm( ModelForm ):
         # Create an image from the QR Code instance
         img = qr.make_image()
         img_data=io.BytesIO()
-        img.savefig(img_data,format='png')
+        img.save(img_data)
         img_data.seek(0)
         conn = boto.connect_s3(aws_access_key_id=ACCESS_KEY,
         aws_secret_access_key=SECRET_KEY,
