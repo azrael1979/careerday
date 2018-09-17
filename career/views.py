@@ -416,7 +416,7 @@ def mostragrafici(request):
             cols.insert(0, cols.pop(cols.index('Group')))
             results=results[cols]
             #print results.head()
-            urlimages.append("/media/graphs/"+sessione+"_Q"+str(k)+".jpg")
+            urlimages.append(sessione+"_Q"+str(k)+".jpg")
             spiderplot(results,urlimages[k],differences)
             #prendiamo tutte le domande e le serviamo poi al template
             domande=[x[0].encode('utf-8') for x in Question.objects.all().values_list('question_text')]
