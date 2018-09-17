@@ -478,10 +478,13 @@ def spiderplot(df,urlimage,differences):
          
         # Add legend
         plt.legend(loc='upper right', bbox_to_anchor=(0.1, 0.1))
-        plt.savefig(urlimage)
-        plt.gcf().clear()
+        try: 
+            plt.savefig(urlimage)
+            plt.gcf().clear()
+        except Exception as e:
+            print e
         return plt
-    except: 
+    except IOError as e: 
         img=Image.open('/media/graphs/Error-image.jpg')
         return img
 from django.utils.translation import ugettext as _
