@@ -4,7 +4,7 @@ from django_range_slider.fields import RangeSliderField
 import datetime
 import json
 import numpy as np
-import boto3 as boto
+import boto
 import io
 from bootstrap_datepicker.widgets import DatePicker
 from django.forms import ModelForm
