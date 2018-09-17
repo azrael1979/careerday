@@ -86,9 +86,9 @@ class SessionForm( ModelForm ):
         aws_access_key_id=ACCESS_KEY,
         aws_secret_access_key=SECRET_KEY)
         s3 = boto3.resource('s3')
-        client.put_object(Body=img_data, Bucket="careerspace",ContentType='image/png', Key='/media/qr/id'+'.png')
+        client.put_object(Body=img_data, Bucket="careerspace",ContentType='image/png', Key='/media/qr/'+id+'.png')
         #img.save('./media/qrcodes/'+id+'.jpg')
-        latestsession.qrcode='/media/qr/id'+'.jpg'
+        latestsession.qrcode='/media/qr/'+id+'.jpg'
         latestsession.save()
         #CALCOLIAMO LE MEDIE DEGLI EMPLOYER CHE STOREREMO POI NEL DATABASE PER USO FUTURO
         #anzitutto troviamo le sessioni relative a emplyer e uni        
