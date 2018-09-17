@@ -57,18 +57,18 @@ def show_qr_view(request):
     session_id=request.GET.get('session')
     latestsession=Session.objects.filter(hash=session_id)[0]
 #    latestsession=Session.objects.latest('id')
-    print "L'ultima sessione è:"+latestsession.hash
+    #print "L'ultima sessione è:"+latestsession.hash
     url=tinyurl.create_one(host_url+'/start_session/?session='+session_id)
-    print url
+    #print url
     img=latestsession.qrcode
-    print img
+    #print img
     return render(request,"interstitial.html",{"img":img,"session":session_id,"url":url})
 
 class newsession_form(FormView):
     def get_initial(self):
         while True:
             hash_text=uuid.uuid4().hex
-            print hash_text
+            #print hash_text
             try: 
                 t=Session.objects.get(hash=hash_text).exists()
                 print "hex already present, new one being generated" 
@@ -108,7 +108,7 @@ def newuserprocess(request):
     t=User.objects.get(id=UserID)
     t.yob=yob
     t.gender=gender
-    print "il nuovo utente ha id"+UserID+"gender"+gender+"sessione"+sessionid+"yob"+str(yob)
+    #print "il nuovo utente ha id"+UserID+"gender"+gender+"sessione"+sessionid+"yob"+str(yob)
     t.save()
     return redirect("/endpage?user="+UserID+"&session="+sessionid)
 @never_cache    
@@ -118,7 +118,7 @@ def question1(request):
     if (Session.objects.get(hash=session_id).chiusa==True):
         return redirect(sessionclosed) 
     #prendiamo utente e sessione dalll'uRL
-    print session_id, user_id
+    #print session_id, user_id
     skill_set=[]
     q_id=0
     q=Question.objects.all()
@@ -215,10 +215,10 @@ def question5(request):
 @csrf_exempt    
 def process_id(request):
     if request.method == 'POST':
-        print "ok, ora processiamo i dati"
+        #print "ok, ora processiamo i dati"
         stringa=request.POST        
         #log.debug(stringa)
-        print stringa
+        #print stringa
     #list (stringa.items)
 
 def sessionclosed (request):
@@ -227,7 +227,7 @@ def sessionclosed (request):
 
 def start_session(request):
     token=request.GET.get('session',"")
-    print "token"+token
+    #print "token"+token
     userID=str(User.objects.create(session=token).id)
   #  response = redirect('question1', permanent=True)
   #  response['Location'] += '?session='+token+"&user=100"
@@ -239,7 +239,7 @@ def start_session(request):
 def process(request):#processa l'ordine di ciascuna lista di skills
     array_risultati=[]
     if request.method == 'POST':
-        print "ok, ora processiamo i dati"
+        #print "ok, ora processiamo i dati"
         stringa=request.POST     
         #array_risultati=stringa.split(',')
         sessione_proc=stringa['session']
@@ -257,7 +257,7 @@ def process(request):#processa l'ordine di ciascuna lista di skills
         t.item4=int(item4_proc)
         t.item5=int(item5_proc)
         t.save()
-        print "reply updated"
+        #print "reply updated"
         print created
         return (HttpResponse('successo elab dati'))
 
@@ -277,7 +277,7 @@ def get_replies(qset,faimedia): #k è un queryset
         return lista_risposte
     if faimedia==True:
         replies_media=list(map(mean, zip(*myreplies)))
-        print replies_media
+        #print replies_media
         return replies_media
 @csrf_protect  
 def endpage (request):
@@ -292,12 +292,12 @@ def endpage (request):
     #if not Session.objects.get(hash=sessione).chiusa: 
     #    return redirect (request,'wait.html',{"sessione":sessione,"utente":UserID}
     for a in range (0,5):
-        nomefile="./media/graphs/user"+UserID+"sessione"+sessione+"_Q"+str(a)+".jpg"
+        nomefile="/media/graphs/user"+UserID+"sessione"+sessione+"_Q"+str(a)+".jpg"
         if os.path.isfile(nomefile): 
-            print "we got "+nomefile
+            #print "we got "+nomefile
             urlimages[a]=nomefile
-    print "ecco le domande che esistono"
-    print urlimages       
+    #print "ecco le domande che esistono"
+    #print urlimages       
     
     admin_object=Admindata.objects.get(id=1)
     employer_means=json.loads(admin_object.employer_averages)
@@ -318,14 +318,14 @@ def endpage (request):
     #OCCHIO CHE LE ID DI QUESTION e REPLIES non partono da 0
         skill_list=Skill.objects.filter(question_id=6+a).values_list('question_text',flat=True)
         assi.append(list(skill_list)) #lista dei testi delle domande
-        print skill_list
+        #print skill_list
     #2: le sue risposte 
         session_means_query=Risposta.objects.filter(session=sessione,questionId=a,user=UserID)
         sessionmeans=get_replies(session_means_query,False)
-        print sessionmeans
+        #print sessionmeans
         session_results.append(sessionmeans)
         
-    print session_results
+    #print session_results
     try:
         for k in range (0,5):
             domande=[x[0].encode('utf-8') for x in Question.objects.all().values_list('question_text')]
@@ -339,8 +339,8 @@ def endpage (request):
                 #portiamo la colonna "group" in apertura
                 cols.insert(0, cols.pop(cols.index('Group')))
                 results=results[cols]
-                print results.head()
-                urlimages[k]=("./media/graphs/user"+str(UserID)+"sessione"+sessione+"_Q"+str(k)+".jpg")           
+                #print results.head()
+                urlimages[k]=("/media/graphs/user"+str(UserID)+"sessione"+sessione+"_Q"+str(k)+".jpg")           
                 spiderplot(results,urlimages[k],differences)
             else: 
                 print"we have this graph already"
@@ -362,8 +362,8 @@ def mostragrafici(request):
     admin_object=Admindata.objects.get(id=1)
     employer_means=json.loads(admin_object.employer_averages)
     uni_means=json.loads(admin_object.uni_averages)
-    print uni_means[1]
-    print employer_means[1]
+    #print uni_means[1]
+    #print employer_means[1]
     ###formato dataset: 
 #    df = pd.DataFrame({
 #    'group': ['Ses','Uni','Employer','D'],
@@ -404,7 +404,7 @@ def mostragrafici(request):
             #portiamo la colonna "group" in apertura
             cols.insert(0, cols.pop(cols.index('Group')))
             results=results[cols]
-            print results.head()
+            #print results.head()
             urlimages.append("/media/graphs/"+sessione+"_Q"+str(k)+".jpg")
             spiderplot(results,urlimages[k],differences)
             #prendiamo tutte le domande e le serviamo poi al template
