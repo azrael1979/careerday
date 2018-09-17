@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-import matplotlib
-matplotlib.use('Agg')
 from __future__ import unicode_literals,division
 from django.views.decorators.cache import never_cache
 from django.shortcuts import redirect
@@ -26,6 +24,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.csrf import csrf_exempt
 import qrcode
 from django.views.generic.edit import FormView
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pd
 from math import pi
