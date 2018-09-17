@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.template import RequestContext
 import random,sys,os
 import io
-import boto
+import boto3
 import tinyurl
 from PIL import Image
 from botocore.client import Config
