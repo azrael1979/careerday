@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.template import RequestContext
 import random,sys,os
+import io
 import tinyurl
 from PIL import Image
 from boto3 import session
