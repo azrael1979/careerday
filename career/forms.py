@@ -4,6 +4,7 @@ from django_range_slider.fields import RangeSliderField
 import datetime
 import json
 import numpy as np
+import boto3
 from bootstrap_datepicker.widgets import DatePicker
 from django.forms import ModelForm
 from .models import Session,Admindata,User,Risposta
@@ -14,6 +15,9 @@ import tinyurl
 #import pandas as pd
 #from math import pi
 host_url='http://104.248.46.248:8000'
+ACCESS_ID = 'RPIBQG3DPFHSGPEKIXSI'
+SECRET_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
+
 
 ora = datetime.datetime.now()
 anno=ora.year
@@ -71,9 +75,16 @@ class SessionForm( ModelForm ):
         qr.make(fit=True)
         # Create an image from the QR Code instance
         img = qr.make_image()
-        
+        img_data=io.BytesIO()
+        img.savefig(img_data,format='png')
+        img_data.seek(0)
+        conn = boto.connect_s3(aws_access_key_id=ACCESS_KEY,
+        aws_secret_access_key=SECRET_KEY,
+        host='ams3.digitaloceanspaces.com')
+        bucket = conn.get_bucket('careerspace')
+        bucket.put_object(Body=img_data, ContentType='image/png', Key=id+'.png')
         #img.save('./media/qrcodes/'+id+'.jpg')
-        latestsession.qrcode='/media/qrcodes/'+id+'.jpg'
+        latestsession.qrcode=id+'.jpg'
         latestsession.save()
         #CALCOLIAMO LE MEDIE DEGLI EMPLOYER CHE STOREREMO POI NEL DATABASE PER USO FUTURO
         #anzitutto troviamo le sessioni relative a emplyer e uni        

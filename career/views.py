@@ -346,7 +346,7 @@ def endpage (request):
                 cols.insert(0, cols.pop(cols.index('Group')))
                 results=results[cols]
                 #print results.head()
-                urlimages[k]=("/media/graphs/user"+str(UserID)+"sessione"+sessione+"_Q"+str(k)+".jpg")           
+                urlimages[k]=("user"+str(UserID)+"sessione"+sessione+"_Q"+str(k)+".jpg")           
                 try: 
                     spiderplot(results,urlimages[k],differences)
                 except IOError as e:
