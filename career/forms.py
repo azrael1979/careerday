@@ -71,7 +71,8 @@ class SessionForm( ModelForm ):
         qr.make(fit=True)
         # Create an image from the QR Code instance
         img = qr.make_image()
-        img.save('./media/qrcodes/'+id+'.jpg')
+        
+        #img.save('./media/qrcodes/'+id+'.jpg')
         latestsession.qrcode='/media/qrcodes/'+id+'.jpg'
         latestsession.save()
         #CALCOLIAMO LE MEDIE DEGLI EMPLOYER CHE STOREREMO POI NEL DATABASE PER USO FUTURO
