@@ -36,7 +36,7 @@ import datetime
 from scipy.constants.constants import yobi
 import os
 
-ACCESS_KEY = (os.environ["CAREER_APP_ACCESS_KEY"])
+ACCESS_KEY = 
 SECRET_KEY = (os.environ["CAREER_APP_SECRET_KEY"])
 host_url=(os.environ["CAREER_APP_HOST"])
 hash_text=''
