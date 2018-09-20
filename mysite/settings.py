@@ -24,7 +24,7 @@ SECRET_KEY = "aed!953ui*o%e3mhx4$9sk5l8zez@88!v(s%&lh0jot=7e#xo2" #os.environ["C
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = (os.environ["CAREER_HOST"])
+ALLOWED_HOSTS = "http://104.248.46.248" #(os.environ["CAREER_HOST"])
 
 
 # Application definition
@@ -124,10 +124,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-AWS_ACCESS_KEY_ID = (os.environ["CAREER_AWS_ACCESS_KEY_ID"]) #'RPIBQG3DPFHSGPEKIXSI'
-AWS_SECRET_ACCESS_KEY = (os.environ["CAREER_AWS_SECRET_KEY_ID"])#'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
-AWS_STORAGE_BUCKET_NAME = (os.environ["CAREER_AWS_ACCESS_KEY_ID"])#'careerspace'
-AWS_S3_ENDPOINT_URL = (os.environ["CAREER_AWS_S3_ENDPOINT_URL"])#'https://ams3.digitaloceanspaces.com'
+AWS_ACCESS_KEY_ID = 'RPIBQG3DPFHSGPEKIXSI'
+AWS_SECRET_ACCESS_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
+AWS_STORAGE_BUCKET_NAME = 'careerspace'
+AWS_S3_ENDPOINT_URL ='https://ams3.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
