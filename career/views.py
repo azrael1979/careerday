@@ -237,6 +237,9 @@ def start_session(request):
     token=request.GET.get('session',"")
     #print "token"+token
     userID=str(User.objects.create(session=token).id)
+    for a in range (0,5):
+        Risposta.objects.create(session=token,user=userID,questionId=a)
+
   #  response = redirect('question1', permanent=True)
   #  response['Location'] += '?session='+token+"&user=100"
   #  return response
