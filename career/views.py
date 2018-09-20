@@ -34,10 +34,11 @@ import pandas as pd
 from math import pi
 import datetime
 from scipy.constants.constants import yobi
+import os
 
-ACCESS_KEY = 'RPIBQG3DPFHSGPEKIXSI'
-SECRET_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
-host_url='http://104.248.46.248'
+ACCESS_KEY = (os.environ["CAREER_APP_ACCESS_KEY"])
+SECRET_KEY = (os.environ["CAREER_APP_SECRET_KEY"])
+host_url=(os.environ["CAREER_APP_HOST"])
 hash_text=''
 
 def mean(a):
