@@ -36,9 +36,9 @@ import datetime
 from scipy.constants.constants import yobi
 import os
 
-ACCESS_KEY = "LSW6HR3ZSEDI7QFFUNKO"
+ACCESS_KEY = 'LSW6HR3ZSEDI7QFFUNKO'
 SECRET_KEY = 'ZhjnlLZMUuGuIHSmDYAMvNhl4mSq9Wf87yYiyrlGOpg'
-host_url="http://104.248.46.248"
+host_url='http://104.248.46.248'
 hash_text=''
 
 def mean(a):

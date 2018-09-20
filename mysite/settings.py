@@ -24,7 +24,7 @@ SECRET_KEY = "aed!953ui*o%e3mhx4$9sk5l8zez@88!v(s%&lh0jot=7e#xo2" #os.environ["C
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['104.248.46.248'] 
+ALLOWED_HOSTS = ['104.248.46.248','47.99.121.32:39169'] 
 
 
 # Application definition
@@ -137,7 +137,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'career/static'),
 ]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_ROOT = '/home/career/careerday/media/'
 MEDIA_URL = 'https://%s/%s/media/'
