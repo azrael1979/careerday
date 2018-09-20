@@ -27,7 +27,7 @@ else {
     localStorage.clear(); // an option
 }
 </script>
-<div>
+<div style="overflow-y:scroll">
   <div data-role="header" data-theme="d">
     <h1>1: Soft Skills</h1>
   </div>
@@ -56,7 +56,7 @@ else {
 <a style="padding:20px" id="forward" href="{% url 'question2' %}?session={{sessione}}&user={{utente}}"> Avanti </a>
 </div>
 </div>
-
+</div>
 
 <script>
 var sessionId="{{sessione}}";
