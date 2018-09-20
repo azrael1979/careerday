@@ -24,7 +24,7 @@ SECRET_KEY = (os.environ["CAREER_SECRET_KEY"])
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["104.248.46.248"]
+ALLOWED_HOSTS = (os.environ["CAREER_HOST"])
 
 
 # Application definition
