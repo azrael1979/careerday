@@ -124,8 +124,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'RPIBQG3DPFHSGPEKIXSI'
-AWS_SECRET_ACCESS_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
+AWS_ACCESS_KEY_ID = 'LSW6HR3ZSEDI7QFFUNKO'
+AWS_SECRET_ACCESS_KEY = 'ZhjnlLZMUuGuIHSmDYAMvNhl4mSq9Wf87yYiyrlGOpg'
 AWS_STORAGE_BUCKET_NAME = 'careerspace'
 AWS_S3_ENDPOINT_URL ='https://ams3.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {

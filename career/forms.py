@@ -16,8 +16,8 @@ import tinyurl
 #import pandas as pd
 #from math import pi
 host_url='http://104.248.46.248'
-ACCESS_KEY = 'RPIBQG3DPFHSGPEKIXSI'
-SECRET_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
+ACCESS_KEY = 'LSW6HR3ZSEDI7QFFUNKO'
+SECRET_KEY = 'ZhjnlLZMUuGuIHSmDYAMvNhl4mSq9Wf87yYiyrlGOpg'
 
 
 ora = datetime.datetime.now()
