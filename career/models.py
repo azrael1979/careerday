@@ -39,6 +39,7 @@ class User(models.Model):
     yob=models.CharField(max_length=4,default=1998)
     gender=models.CharField(max_length=1,default='F')  
     session=models.CharField(max_length=128,default="")
+
     
 #@python_2_unicode_compatible  # only if you need to support Python 2
 class Skill(models.Model):

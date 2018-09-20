@@ -15,7 +15,7 @@ import tinyurl
 #import matplotlib.pyplot as plt
 #import pandas as pd
 #from math import pi
-host_url='http://104.248.46.248:8000'
+host_url='http://104.248.46.248'
 ACCESS_KEY = 'RPIBQG3DPFHSGPEKIXSI'
 SECRET_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
 
