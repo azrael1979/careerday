@@ -9,15 +9,15 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
 import os
+    
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'aed!953ui*o%e3mhx4$9sk5l8zez@88!v(s%&lh0jot=7e#xo2'
+SECRET_KEY = (os.environ["CAREER_SECRET_KEY"])
 #SECRET_KEY = os.environ['SECRET_KEY']
 
 
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-     #           'ENGINE': 'django.db.backends.postgresql_psycopg2',
-     #   'NAME': 'careerday',
-     #   'USER': 'c_career',
-     #   'PASSWORD': 'tetsuo792',
-     #   'HOST': 'localhost',
-     #   'PORT': '',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'NAME': (os.environ["CAREER_DB_NAME"]),
+        #'USER': (os.environ["CAREER_DB_USER"]),
+        #'PASSWORD': (os.environ["CAREER_DB_PASSWORD"]),
+        #'HOST': 'localhost',
+        #'PORT': '',
        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
@@ -124,10 +124,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'RPIBQG3DPFHSGPEKIXSI'
-AWS_SECRET_ACCESS_KEY = 'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
-AWS_STORAGE_BUCKET_NAME = 'careerspace'
-AWS_S3_ENDPOINT_URL = 'https://ams3.digitaloceanspaces.com'
+AWS_ACCESS_KEY_ID = (os.environ["CAREER_AWS_ACCESS_KEY_ID"]) #'RPIBQG3DPFHSGPEKIXSI'
+AWS_SECRET_ACCESS_KEY = (os.environ["CAREER_AWS_SECRET_KEY_ID"])#'e+SvUUoKa3S61BF020aOzOmvRFZz3MRb7YfmytlTiEs'
+AWS_STORAGE_BUCKET_NAME = (os.environ["CAREER_AWS_ACCESS_KEY_ID"])#'careerspace'
+AWS_S3_ENDPOINT_URL = (os.environ["CAREER_AWS_S3_ENDPOINT_URL"])#'https://ams3.digitaloceanspaces.com'
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
@@ -137,7 +137,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'career/static'),
 ]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_ENDPOINT_URL, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = (os.environ["CAREER_STATICFILES_STORAGE"])
 
 MEDIA_ROOT = '/home/career/careerday/media/'
 MEDIA_URL = 'https://%s/%s/media/'
