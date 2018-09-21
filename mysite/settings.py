@@ -22,7 +22,7 @@ SECRET_KEY = "aed!953ui*o%e3mhx4$9sk5l8zez@88!v(s%&lh0jot=7e#xo2" #os.environ["C
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['104.248.46.248','47.99.121.32:39169'] 
 
