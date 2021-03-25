@@ -232,7 +232,7 @@ python-magic==0.4.15
 pytz==2017.2
 PyWavelets==0.5.2
 pyxform==0.11.5
-PyYAML==3.12
+PyYAML==5.4
 pyzmq==16.0.2
 qrcode==6.0
 QtAwesome==0.4.4
