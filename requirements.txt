@@ -198,7 +198,7 @@ psutil==5.2.2
 psycopg2-binary==2.7.5
 ptyprocess==0.5.1
 public==1.0.3
-py==1.5.4
+py==1.10.0
 py-mini-racer==0.1.15
 pyacoustid==1.1.5
 PyAudio==0.2.7
