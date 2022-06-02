@@ -111,7 +111,7 @@ heroku==0.1.4
 html-json-forms==1.0.0
 html2text==2018.1.9
 -e git+https://github.com/rhec/django-html5.git@c4a76e02744422c3305f01ca361ab4b0cdcd1198#egg=html5
-html5lib==0.999
+html5lib==0.99999999
 idna==2.6
 imagesize==1.0.0
 instagram-scraper==1.5.36
